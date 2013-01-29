@@ -1,0 +1,57 @@
+{
+    "name": "xcfw",
+	"preferGlobal": "false",
+	"version": "2.0.0",
+	"author": "Xyclus Cipta Teknologi <xyclus@gmail.com>",
+	"description": "Xyclus Framework for Cloud Application, node.js version",
+	"contributors": [ 
+		{
+			"name": "Dimas Arif",
+			"email": "sikancil.r19@gmail.com"
+		}, 
+		{
+			"name": "Yayat Ruhiat",
+			"email": "broyxyc@gmail.com"
+		},
+	       {
+		       "name": "Sandi Gilang Andika",
+		       "email": "sandi.gilang.andika@gmail.com"
+	       }
+	],
+	"bin": {
+		"xcfw": "./bin/xcfw"
+	},
+	"scripts": {
+		"start": "node ./bin/xcfw",
+		"test": "",
+		"predeploy": "echo Starting to deploying the app.",
+		"postdeploy": "echo Deploying the app finished."
+	},
+	"main": "./lib/xcfw",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xyclus/xcfw.git"
+	},
+	"keywords": [
+		"framework",
+		"cloud-apps",
+		"server",
+		"client"
+	],
+	"dependencies" : {
+		"mongoose":  "*",
+		"connect":  "*",
+		"connect-route": "*",
+	       "connect-render": "*",
+	       "connect-redirection": "*"	
+	},
+	"analyze": false,
+	"bundledDependencies": [
+		"union",
+		"ecstatic"
+	],  
+	"license": "MIT",
+	"engines": {
+		"node": ">=0.6"
+	}
+}

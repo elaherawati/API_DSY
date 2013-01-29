@@ -1,0 +1,296 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="Your Website Your menu Article title Posted on Mon Dec 31 12:28:55 2012 by Author Name" />
+    <title>API for Developer</title>
+    
+    <link rel="shortcut icon" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+	<link rel="author" href="https://plus.google.com/u/110713646341961256563/about" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.ie.css" />
+    <![endif]-->
+    
+    <style>
+        @import url(http://fonts.googleapis.com/css?family=Yesteryear);
+        
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            
+            overflow: hidden;
+            font-family: "Open Sans",Helvetica,sans-serif;
+            font-weight: 400;
+        }
+        body {
+            background-image: url("https://koding.com/images/koding-new-bg.png");
+            background-repeat: repeat-x;
+        }
+        header.nav-cont {
+            padding: 8px;
+            background-color: rgba(224, 246, 255, 0.1);
+            
+            top: 0px;
+            left: 0px;
+            bottom: 96px;
+            width: 240px;
+            position: absolute;
+            
+            font-size: 0.8em;
+        }
+        nav > div.nav-menu {
+            border: 1px solid transparent;
+            border-width: 1px 0;
+            cursor: pointer;
+            margin: 0 6px 0 0;
+            overflow: visible;
+            outline: 0;
+            vertical-align: baseline;
+            background: transparent;
+            display: block;
+        }
+        nav > div.nav-menu > .title {
+            margin: 0;
+            padding: 1px 0 1px 18px;
+            font-weight: 300 !important;
+            font-size: 14px;
+            line-height: 20px;
+            overflow: hidden;
+            color: #adadad !important;
+            text-shadow: none !important;
+            display: block;
+            text-decoration: none;
+        }
+        nav > div.nav-menu > a.title > span.nav-icon {
+            display: block;
+            float: left;
+            margin: -1px 16px 0px -8px;
+            background-image: url("https://koding.com/images/_kd.sprites.png");
+            background-color: transparent;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            width: 20px;
+            height: 20px;
+        }
+        span.nav-menu.home {
+            /*background-position: 120 -80px;*/
+        }
+        section.body-cont {
+            background-color: rgba(255, 255, 255, 0.99);
+            z-index: 2;
+            
+            padding: 8px;
+            left: 52px;
+            right: 0px;
+            top: 0px;
+            bottom: 24px;
+            position: absolute;
+            
+            text-shadow: 1px 1px 1px #FCFCFC;
+            background: #E2E2E2 url("https://koding.com/images/finder-back.gif") repeat left top;
+            -webkit-transition: left .3s linear;
+            -moz-transition: left .3s linear;
+            -o-transition: left .3s linear;
+            -ms-transition: left .3s linear;
+            transition: left .3s linear;
+            
+            -webkit-box-shadow: 0 3px 4px 3px rgba(0,0,0,0.15);
+            box-shadow: 0 3px 4px 3px rgba(0,0,0,0.15);
+        }
+        section.body-cont.expanded {
+            left: 256px;
+        }
+        
+        section.body-cont > #map {
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 0;
+            
+            top: 0px;
+            left: 0px;
+            bottom: 0px;
+            right: 0px;
+            position: absolute;
+        }
+        section.body-cont > #infos {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 8px;
+            margin: 0px 8px 0px 0px;
+            width: 30%;
+            z-index: 99;
+            right: 0px;
+            position: absolute;
+            float: right;
+            
+            text-align: right;
+            text-size: 0.6em;
+        }
+        
+        aside.body-cont {
+            padding: 0px 8px 8px 8px;
+            background-color: rgba(255, 255, 255, 0.3);
+            z-index: 1;
+            
+            left: 0px;
+            bottom: 0px;
+            height: 88px;
+            width: 240px;
+            position: absolute;
+            
+            font-size: 0.7em;
+            color: #ddd;
+        }
+        footer.body-cont {
+            background-color: rgba(237, 237, 237, 0.99);
+            z-index: 3;
+            
+            left: 52px;
+            bottom: 0px;
+            right: 0px;
+            height: 24px;
+            position: absolute;
+            
+            font-size: 0.7em;
+            color: #000;
+            
+            text-shadow: 1px 1px 1px #FCFCFC;
+            /* background: #E2E2E2 url("https://koding.com/images/finder-back.gif") repeat left top; */
+            -webkit-transition: left .3s linear;
+            -moz-transition: left .3s linear;
+            -o-transition: left .3s linear;
+            -ms-transition: left .3s linear;
+            transition: left .3s linear;
+        }
+        footer.body-cont.expanded {
+            left: 256px;
+        }
+        footer > div {
+            padding-top: 5px;
+            
+            height: 100%;
+            text-align: center;
+        }
+    </style>
+    
+    <!-- In <head> -->
+    <script>(function(w,d,u){w.readyQ=[];w.bindReadyQ=[];function p(x,y){if(x=="ready"){w.bindReadyQ.push(y);}else{w.readyQ.push(x);}};var a={ready:p,bind:p};w.$=w.jQuery=function(f){if(f===d||f===u){return a}else{p(f)}}})(window,document)</script>
+</head>
+    
+<body>
+    <header class="nav-cont">
+        <nav>
+            <div class="nav-menu">
+                <a class="title"><span class="nav-icon home"></span>Menu 1</a>
+            </div>
+            <div class="nav-menu">
+                <a class="title"><span class="nav-icon home"></span>Menu 2</a>
+            </div>
+            <div class="nav-menu">
+                <a class="title"><span class="nav-icon home"></span>Menu 3</a>
+            </div>
+            <div class="nav-menu">
+                <a class="title"><span class="nav-icon home"></span>Menu 4</a>
+            </div>
+            <div class="nav-menu">
+                <a class="title"><span class="nav-icon home"></span>Menu 5</a>
+            </div>
+            <div class="nav-menu">
+                <a class="title"><span class="nav-icon home"></span>Menu 6</a>
+            </div>
+        </nav>
+    </header>
+    <section class="body-cont">
+        <div id="map"></div>
+        <div id="infos">
+            <article>
+                <header>
+                    <h2>Title Goes here</h2>
+                    <p>Posted on <time datetime="2012-07-28T13:00:24+01:00">July 28th 2012</time> by <a href="#">Author</a> - <a href="#comments">12 comments</a></p>
+                </header>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </article>
+            <article>
+                <header>
+                    <h2>Article title</h2>
+                    <p>Posted on <time datetime="2012-07-26T13:00:24+01:00">July 26th 2012</time> by <a href="#">Author</a> - <a href="#comments">9 comments</a></p>
+                </header>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+            </article>
+        </div>
+    </section>
+    <aside class="body-cont">
+        <h2>Contact Us</h2>
+        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+    </aside>
+    <footer class="body-cont">
+        <div>Copyright 2013 Point.Me ©</div>
+    </footer>
+    
+    <script>
+    	$(document).bind("ready", function () {
+			/* console.log("Example D: $(document).bind(\"ready\", handler)"); */
+		});
+		$(document).ready(function () {
+			/* console.log("Example A: $(document).ready(handler)"); */
+            
+			$('#btnExp').click(function(){
+                $('section').attr('class', 'body-cont expanded');
+                $('footer').attr('class', 'body-cont expanded');
+			});
+            
+            $('#btnCol').click(function(){
+                $('section').attr('class', 'body-cont collapsed');
+                $('footer').attr('class', 'body-cont collapsed');
+    		});
+            
+            $('nav').hover(
+                function() {
+                    $('section').attr('class', 'body-cont expanded');
+                    $('footer').attr('class', 'body-cont expanded');
+                },
+                function() {
+                    $('section').attr('class', 'body-cont collapsed');
+                    $('footer').attr('class', 'body-cont collapsed');
+                }
+            )
+		});
+		$().ready(function () {
+			/* console.log("Example B: $().ready(handler)"); */
+		});
+		$(function(){
+			/* console.log("Example C: $(handler)"); */
+		});
+	</script>	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js?ver=3.5"></script>
+	<!-- In <body> (just after jQuery) -->
+	<script>(function($,d){$.each(readyQ,function(i,f){$(f)});$.each(bindReadyQ,function(i,f){$(d).bind("ready",f)})})(jQuery,document)</script>
+    <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
+    <script type="text/javascript">
+        var map = L.map('map');
+        var strLoc = 'Jakarta,Indonesia';
+        
+        $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q='+strLoc, function(data) {  
+            if (data.length > 1) {
+                if (data[0].boundingbox != undefined) {
+                    map = map.setView([ data[0].lat, data[0].lon ], 30);
+                    map = map.fitBounds([
+                        [data[0].boundingbox[0], data[0].boundingbox[2]],
+                        [data[0].boundingbox[1], data[0].boundingbox[3]]
+                    ]);
+                } else {
+                    map = map.setView([ data[0].lat, data[0].lon ], 20);
+                }
+            } 
+        });
+        
+        //map = L.map('map').setView([ loc.lat, loc.lng ], 15);
+        L.tileLayer('http://{s}.tile.cloudmade.com/e4c0e4bd3b1e4f0ebf214b60f4b34f5d/997/256/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
+            maxZoom: 18
+        }).addTo(map);
+    </script>
+</body>
+</html>
