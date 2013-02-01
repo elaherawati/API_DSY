@@ -30,3 +30,82 @@ var data = new Schema({
 		  });
 var dataModel = db.model('data', data);
 exports.dataModel = dataModel;
+
+
+
+
+/*
+/////////////////////////////////ADMIN WORKSPACE/////////////////////////////
+//manage company
+var company = new Schema({
+	  		///////isi///////
+    
+            /////////////////
+		  });
+var compModel = db.model('company', company);
+exports.compModel = compModel;
+
+//manage tenant
+var tenant = new Schema({
+	  		 ///////isi///////
+    
+            /////////////////
+		  });
+var tenModel = db.model('tenant', tenant);
+exports.tenModel = tenModel;
+
+//manage users
+var user = new Schema({
+	  		 ///////isi///////
+    
+            /////////////////
+		  });
+var usModel = db.model('user', user);
+exports.usModel = usModel;
+
+//manage groups
+var group = new Schema({
+	  		 ///////isi///////
+    
+            /////////////////
+		  });
+var groModel = db.model('group', group);
+exports.groModel = groModel;
+
+//manage roles/ptivilages
+var role = new Schema({
+	  		 ///////isi///////
+    
+            /////////////////
+		  });
+var roleModel = db.model('role', role);
+exports.roleModel = roleModel;
+
+//manage modules
+var module = new Schema({
+	  		 ///////isi///////
+    
+            /////////////////
+		  });
+var modModel = db.model('module', module);
+exports.modModel = modModel;
+
+//manage dashbosrd
+var dashboard = new Schema({
+	  		 ///////isi///////
+    
+            /////////////////
+		  });
+var dashModel = db.model('dashboard', dashboard);
+exports.dashModel = dashModel;
+
+//broadcast message
+var message = new Schema({
+	  		 ///////isi///////
+    
+            /////////////////
+		  });
+var messModel = db.model('message', message);
+exports.messModel = messModel;
+//////////////////////////////////////////////////////////////////////////////
+*/
