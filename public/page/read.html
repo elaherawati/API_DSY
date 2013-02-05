@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Product Page</title>
+		<!-- <script src="./js/jquery-1.9.0.min.js"></script> -->
+	</head>
+	<body>
+    <!-- Menu --> Ê Ê
+    <h3>
+        <a href="http://localhost:8899/user">Profile</a> &nbsp; | &nbsp;
+        <a href="http://localhost:8899/user/edit">Edit Profile</a> &nbsp; | &nbsp;
+        <a href="http://localhost:8899/company">List Company</a> &nbsp; | &nbsp;
+        <a href="http://localhost:8899/logout">Log Out</a>
+    </h3>
+    <h1>Welcome <%=username%>...!!!</h1>
+		<hr>
+		<h3>Company...</h3>
+		<ul>
+			<% for(var i=0; i < CompanyList.length; i++) {%>
+			<li>
+				<h4><a href="/api/<%=api_key%>/<%=workspace%>/r/companies/?init_company=<%= CompanyList[i].init_company %>"><%= CompanyList[i].init_company %></a></h4>
+				<p><%= CompanyList[i].nama_company %></p>
+				<br>
+			</li>
+			<% } %>
+		</ul> Ê Ê Ê Ê
+		<h3>
+			<a href="http://localhost:8899/insert">Insert a New Company</a>
+		</h3>
+	</body>
+</html>

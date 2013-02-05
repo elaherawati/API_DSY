@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Product</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>Insert Product</h1>
+    <hr>
+      <form id="fInsertProduct">
+        <table cellspacing=5 cellpadding=5>
+          <tbody>
+            <tr><td>Warna</td><td>:</td><td><input type="text" name="warna"></td></tr>
+            <tr><td>Ukuran</td><td>:</td><td><input type="text" name="ukuran"></td></tr>
+            <tr><td>Merk</td><td>:</td><td><input type="text" name="merk"></td></tr>
+            <tr><td>Jenis</td><td>:</td><td><input type="text" name="jenis"></td></tr>
+            <tr><td colspan=3>&nbsp;</td></tr>            
+            <tr><td></td><td colspan=2><input type="submit" name="Submit" value="Submit"></td></tr>
+          </tbody>
+        </table>
+      </form>
+      <script>
+          $(function(){
+            $("#fInsertProduct").submit(function(e){     
+               e.preventDefault();   
+        
+                $.post("/api/<%=api_key%>/<%=workspace%>/i", $("#fInsertProduct").serialize(),
+                function (data, textStatus, jqXHR) {
+                  window.location = 'http://localhost:8899/member';
+                });     
+            });
+          });
+        </script>
+  </body>
+</html>

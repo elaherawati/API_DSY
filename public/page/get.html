@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Insert</title>
+  </head>
+  <body>
+    <h1>Insert Data</h1>
+    <hr>
+      <form method="get" action="/api/<%=api_key%>/<%=workspace%>/g">
+        <table>
+          <tbody>
+            <tr><td>Warna</td><td><input type="text" name="warna" value="<%=warna%>"></td></tr>
+            <tr><td>Ukuran</td><td><input type="text" name="ukuran" value="<%=ukuran%>"></td></tr>
+            <tr><td>Merk</td><td><input type="text" name="merk" value="<%=merk%>"></td></tr>
+            <tr><td>Jenis</td><td><input type="text" name="jenis" value="<%=jenis%>"></td></tr>
+            <!--<tr><td></td><td><input type="submit" name="submit"></td></tr>-->
+          </tbody>
+        </table>
+      </form>
+      <a href="/member">Back</a>
+  </body>
+</html>

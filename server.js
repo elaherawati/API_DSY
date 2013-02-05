@@ -17,7 +17,7 @@ app.use(connect.session({ secret: 'sga'}));
 app.use(redirect());
 
 var oneDay = 86400000;
-app.use(connect.static(__dirname + '/public', {maxAge: oneDay, redirect: true} ));
+app.use(connect.static(__dirname + '/public/', {maxAge: oneDay, redirect: true} ));
 
 app.use(routeHandle.router.doRoute);
 

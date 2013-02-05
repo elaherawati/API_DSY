@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Product</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <!-- Menu --> Ê Ê
+    <h3>
+        <a href="http://localhost:8899/user">Profile</a> &nbsp; | &nbsp;
+        <a href="http://localhost:8899/user/edit">Edit Profile</a> &nbsp; | &nbsp;
+        <a href="http://localhost:8899/company">List Company</a> &nbsp; | &nbsp;
+        <a href="http://localhost:8899/logout">Log Out</a>
+    </h3>
+    <h1>Welcome <%=username%>...!!!</h1>
+    <hr>
+    <h3>
+      Create Company
+    </h3>
+      <form id="fCreateCompany">
+        <table cellspacing=5 cellpadding=5>
+          <tbody>
+            <tr><td>Initial</td><td>:</td><td><input type="text" name="init_company"></td></tr>
+            <tr><td>Nama</td><td>:</td><td><input type="text" name="nama_company"></td></tr>
+            <tr><td>Alamat</td><td>:</td><td><input type="text" name="alamat_company"></td></tr>
+            <tr><td>No. Telp</td><td>:</td><td><input type="text" name="no_telp"></td></tr>
+            <tr><td>Deskripsi</td><td>:</td><td><input type="text" name="deskripsi_company"></td></tr>
+            <tr><td colspan=3>&nbsp;</td></tr>            
+            <tr><td></td><td colspan=2><input type="submit" name="Submit" value="Submit"></td></tr>
+          </tbody>
+        </table>
+      </form>
+      <script>
+          $(function(){
+            $("#fCreateCompany").submit(function(e){     
+               e.preventDefault();   
+                $.post("/api/<%=api_key%>/<%=workspace%>/c/companies", $("#fCreateCompany").serialize(),
+                function (data, textStatus, jqXHR) {
+                  window.location = 'http://localhost:8899/company';
+                });     
+            });
+          });
+        </script>
+  </body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Your Profile</title>
+    <script src="./js/jquery-1.9.0.min.js"></script>
+  </head>
+  <body>
+    <!-- Menu -->    
+    <h3>
+      <a href="http://localhost:8899/user">Profile</a> &nbsp; | &nbsp;
+      <a href="http://localhost:8899/user/edit">Edit Profile</a> &nbsp; | &nbsp;
+      <a href="http://localhost:8899/logout">Log Out</a>
+    </h3>
+    <hr>
+    <section>
+      <h3>Profile</h3>
+      <h3><%= lastname %></h3>
+      <hr>
+      <div>
+        <form method="post" action="/user/edit/process">
+          <table cellspacing=5 cellpadding=5>
+            <tbody>
+              <input type="hidden" name="username" value="<%=username%>">
+              <tr><td>Old Password</td><td>:</td><td><input type="password" name="old_password" size=50></td></tr>
+              <tr><td>New Password</td><td>:</td><td><input type="password" name="new_password" size=50></td></tr>
+              <tr><td>Email</td><td>:</td><td><input type="email" name="email" value="<%=email%>" size=50></td></tr>
+              <tr><td colspan=3><hr></td></tr>              
+              <tr><td>First Name</td><td>:</td><td><input type="text" name="first_name" value="<%=firstname%>" size=50></td></tr>
+              <tr><td>Last Name</td><td>:</td><td><input type="text" name="last_name" value="<%=lastname%>" size=50></td></tr>
+              <tr><td>I am</td><td>:</td><td>
+                                          <input type="radio" name="gender" value="male" <% if (gender == 'male') { %> checked <% } %> >Male
+                                          <input type="radio" name="gender" value="female" <% if (gender == 'female') { %> checked = true <% } %> >Female  
+                                        </td>
+              </tr>
+              <tr><td>Birthday</td><td>:</td><td><input type="date" name="birthday" value="<%= birthday %>" ></td></tr>
+              <tr><td colspan=3>&nbsp;</td></tr>            
+              <tr><td colspan=3><input type="submit" name="edit" value="Edit"></td></tr>
+            </tbody>
+          </table> 
+        </form>
+        <script>
+          /*          
+          $(function(){
+            $("#fEditProfile").submit(function(e){     
+               e.preventDefault();
+               
+                dataString = $("#fEditProfile").serialize();
+                
+                $.ajax({
+                  url: '/api/user/sga',
+                  type: 'PUT',
+                  data: dataString,
+                  success: function(data) {
+                    alert('Load was edited.');
+                  }
+                });     
+            });
+          });
+          */
+        </script>
+      </div>
+    </section>
+  </body>
+</html>

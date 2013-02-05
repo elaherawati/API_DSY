@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Insert</title>
+  </head>
+  <body>
+    <!-- Menu --> Ê Ê
+    <h3>
+        <a href="http://localhost:8899/user">Profile</a> &nbsp; | &nbsp;
+        <a href="http://localhost:8899/user/edit">Edit Profile</a> &nbsp; | &nbsp;
+        <a href="http://localhost:8899/company">List Company</a> &nbsp; | &nbsp;
+        <a href="http://localhost:8899/logout">Log Out</a>
+    </h3>
+    <h1>Welcome <%=username%>...!!!</h1>
+    <hr>
+    <h3>
+      Create Company
+    </h3>
+      <form method="post" action="/api/<%=api_key%>/<%=workspace%>/i">
+        <table>
+          <tbody>
+            <tr><td>Warna</td><td><input type="text" name="warna"></td></tr>
+            <tr><td>Ukuran</td><td><input type="text" name="ukuran"></td></tr>
+            <tr><td>Merk</td><td><input type="text" name="merk"></td></tr>
+            <tr><td>Jenis</td><td><input type="text" name="jenis"></td></tr>
+            <tr><td></td><td><input type="submit" name="submit"></td></tr>
+          </tbody>
+        </table>
+      </form>
+      <a href="/member">Back</a>
+  </body>
+</html>

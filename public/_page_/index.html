@@ -183,29 +183,18 @@
     <header class="nav-cont">
         <nav>
             <div class="nav-menu">
-                <a class="title"><span class="nav-icon home"></span>Menu 1</a>
+                <a class="title" href="http://localhost:8899/login"><span class="nav-icon home"></span>Log In</a>
             </div>
             <div class="nav-menu">
-                <a class="title"><span class="nav-icon home"></span>Menu 2</a>
-            </div>
-            <div class="nav-menu">
-                <a class="title"><span class="nav-icon home"></span>Menu 3</a>
-            </div>
-            <div class="nav-menu">
-                <a class="title"><span class="nav-icon home"></span>Menu 4</a>
-            </div>
-            <div class="nav-menu">
-                <a class="title"><span class="nav-icon home"></span>Menu 5</a>
-            </div>
-            <div class="nav-menu">
-                <a class="title"><span class="nav-icon home"></span>Menu 6</a>
+                <a class="title" href="http://localhost:8899/signup"><span class="nav-icon home"></span>Sign Up</a>
             </div>
         </nav>
     </header>
     <section class="body-cont">
         <div id="map"></div>
         <div id="infos">
-            <article>
+            <!--
+			<article>
                 <header>
                     <h2>Title Goes here</h2>
                     <p>Posted on <time datetime="2012-07-28T13:00:24+01:00">July 28th 2012</time> by <a href="#">Author</a> - <a href="#comments">12 comments</a></p>
@@ -219,6 +208,7 @@
                 </header>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
             </article>
+			-->
         </div>
     </section>
     <aside class="body-cont">
@@ -270,7 +260,7 @@
     <script type="text/javascript" src="http://cdn.leafletjs.com/leaflet-0.5/leaflet.js"></script>
     <script type="text/javascript">
         var map = L.map('map');
-        var strLoc = 'Jakarta,Indonesia';
+        var strLoc = 'Bandung, West Java, Indonesia';
         
         $.getJSON('http://nominatim.openstreetmap.org/search?format=json&limit=5&q='+strLoc, function(data) {  
             if (data.length > 1) {
